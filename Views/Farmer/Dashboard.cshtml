@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PROG7311_POE_PART_2.Models.Farmer>
+<h2>All Farmers</h2>
+<a class="btn btn-success mb-2" href="/Farmer/Create">Add New Farmer</a>
+
+<table class="table table-striped">
+    <thead><tr><th>Name</th><th>Location</th><th>Products</th></tr></thead>
+    <tbody>
+        @foreach (var farmer in Model)
+        {
+            <tr>
+                <td>@farmer.FullName</td>
+                <td>@farmer.Location</td>
+                <td><a href="/Product/ViewByFarmer/@farmer.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

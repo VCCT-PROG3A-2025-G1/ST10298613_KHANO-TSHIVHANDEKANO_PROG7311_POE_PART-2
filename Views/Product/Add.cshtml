@@ -1,0 +1,18 @@
+﻿@model PROG7311_POE_PART_2.Models.Product
+<h2>Add Product</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Category</label>
+        <input asp-for="Category" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Production Date</label>
+        <input asp-for="ProductionDate" type="date" class="form-control" required />
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
