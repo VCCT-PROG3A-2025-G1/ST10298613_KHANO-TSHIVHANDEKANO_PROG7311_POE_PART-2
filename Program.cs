@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PROG7311_POE_PART_2.Data;
 using PROG7311_POE_PART_2.Interfaces;
 using PROG7311_POE_PART_2.Repositories;
+using PROG7311_POE_PART_2.Services;
 
 namespace PROG7311_POE_PART_2
 {
@@ -18,6 +19,10 @@ namespace PROG7311_POE_PART_2
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IFarmerRepository, FarmerRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<FarmerService>();
+            builder.Services.AddScoped<ProductService>();
+
 
 
             var app = builder.Build();
