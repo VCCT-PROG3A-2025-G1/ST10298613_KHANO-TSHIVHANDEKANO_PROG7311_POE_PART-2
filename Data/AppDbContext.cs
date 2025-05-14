@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROG7311_POE_PART_2.Models;
 
-
-
 namespace PROG7311_POE_PART_2.Data
 {
     public class AppDbContext : DbContext
@@ -19,45 +17,52 @@ namespace PROG7311_POE_PART_2.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Seed a demo employee
-            var employee = new User
-            {
-                Id = 1,
-                Username = "employee",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("password"),
-                Role = "Employee"
-            };
+            //seed user
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Username = "employee",
+                    Password = "password",
+                    Role = "Employee"
+                },
+                new User
+                {
+                    Id = 2,
+                    Username = "farmer",
+                    Password = "password",
+                    Role = "Farmer"
+                }
+            );
 
-            // Seed a demo farmer
-            var farmerUser = new User
-            {
-                Id = 2,
-                Username = "farmer",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("password"),
-                Role = "Farmer"
-            };
+            modelBuilder.Entity<Farmer>().HasData(
+                new Farmer
+                {
+                    Id = 1,
+                    FullName = "Khano",
+                    Location = "Limpopo"
+                }
+            );
 
-            var farmer = new Farmer
-            {
-                Id = 1,
-                FullName = "Khano Sbandy",
-                Location = "Limpopo",
-                
-            };
-
-            var product = new Product
-            {
-                Id = 1,
-                Name = "Chili Peppers",
-                Category = "Vegetables",
-                ProductionDate = DateTime.Today.AddDays(-7),
-                FarmerId = 1
-            };
-
-            modelBuilder.Entity<User>().HasData(employee, farmerUser);
-            modelBuilder.Entity<Farmer>().HasData(farmer);
-            modelBuilder.Entity<Product>().HasData(product);
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    Name = "Chilli",
+                    Category = "Vegetable",
+                    ProductionDate = new DateTime(2024, 01, 15),
+                    FarmerId = 1
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = "Butternut",
+                    Category = "Vegetable",
+                    ProductionDate = new DateTime(2024, 02, 20),
+                    FarmerId = 1
+                }
+            );
         }
-
     }
 }
+

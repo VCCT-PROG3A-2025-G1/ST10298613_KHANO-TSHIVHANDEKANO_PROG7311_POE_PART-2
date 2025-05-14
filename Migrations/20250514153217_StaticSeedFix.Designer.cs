@@ -12,8 +12,8 @@ using PROG7311_POE_PART_2.Data;
 namespace PROG7311_POE_PART_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250514143157_SeedDemoData")]
-    partial class SeedDemoData
+    [Migration("20250514153217_StaticSeedFix")]
+    partial class StaticSeedFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace PROG7311_POE_PART_2.Migrations
                         new
                         {
                             Id = 1,
-                            FullName = "Khano Sbandy",
+                            FullName = "Khano",
                             Location = "Limpopo"
                         });
                 });
@@ -90,10 +90,18 @@ namespace PROG7311_POE_PART_2.Migrations
                         new
                         {
                             Id = 1,
-                            Category = "Vegetables",
+                            Category = "Vegetable",
                             FarmerId = 1,
-                            Name = "Chili Peppers",
-                            ProductionDate = new DateTime(2025, 5, 7, 0, 0, 0, 0, DateTimeKind.Local)
+                            Name = "Chilli",
+                            ProductionDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Category = "Vegetable",
+                            FarmerId = 1,
+                            Name = "Butternut",
+                            ProductionDate = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -131,14 +139,14 @@ namespace PROG7311_POE_PART_2.Migrations
                         new
                         {
                             Id = 1,
-                            PasswordHash = "$2a$11$Q46hUfKMseJE7LaxstxlhulUYVhPLr8ozUG9v5vrs/tzOhyDVnFbK",
+                            PasswordHash = "$2a$11$7dINkNWDlEYo0LTxQuPf4OeO0Z0dOTm0rNyO3nHHHPaRA3S6Ms6bi",
                             Role = "Employee",
                             Username = "employee"
                         },
                         new
                         {
                             Id = 2,
-                            PasswordHash = "$2a$11$O8UzYcelj8d9dBGxrQKDYO5qJ.WP5GNeQPxcFhptyryLW0JbPavFa",
+                            PasswordHash = "$2a$11$7dINkNWDlEYo0LTxQuPf4OeO0Z0dOTm0rNyO3nHHHPaRA3S6Ms6bi",
                             Role = "Farmer",
                             Username = "farmer"
                         });
