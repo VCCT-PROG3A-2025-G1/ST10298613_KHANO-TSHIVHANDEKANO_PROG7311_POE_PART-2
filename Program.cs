@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using PROG7311_POE_PART_2.Data;
+
 namespace PROG7311_POE_PART_2
 {
     public class Program
@@ -8,6 +11,8 @@ namespace PROG7311_POE_PART_2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); 
 
             var app = builder.Build();
 
@@ -15,7 +20,6 @@ namespace PROG7311_POE_PART_2
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
