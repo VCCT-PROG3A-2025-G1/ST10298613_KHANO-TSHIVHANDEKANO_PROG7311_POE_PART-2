@@ -15,7 +15,7 @@ namespace PROG7311_POE_PART_2
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IFarmerRepository, FarmerRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();

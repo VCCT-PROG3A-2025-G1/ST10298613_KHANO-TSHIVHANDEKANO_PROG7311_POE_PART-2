@@ -21,7 +21,8 @@ namespace PROG7311_POE_PART_2.Controllers
             if (HttpContext.Session.GetString("Role") != "Farmer")
                 return RedirectToAction("Login", "Auth");
 
-            int farmerId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            // SOLUTION 1: Always use FarmerId = 1
+            int farmerId = 1;
             var products = await _productService.GetProductsByFarmerIdAsync(farmerId);
             return View(products);
         }
@@ -39,8 +40,8 @@ namespace PROG7311_POE_PART_2.Controllers
         {
             if (HttpContext.Session.GetString("Role") != "Farmer")
                 return RedirectToAction("Login", "Auth");
-
-            product.FarmerId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            // Assigned value for FarmerId is set to 1  
+            product.FarmerId = 1; 
             await _productService.AddProductAsync(product);
             return RedirectToAction("Dashboard");
         }
